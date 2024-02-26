@@ -1,0 +1,42 @@
+.container {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+.form{
+    width: 320px;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 16px;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+.form label {
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+.form input {
+    background-color: transparent;
+    padding: 8px 8px;
+    color: inherit;
+    border: 1px solid blue;
+    border-radius: 10px;
+    font-size: 16px;
+}
+.error {
+    color: red;
+    font-size: 14px;
+}
+.form button {
+    display: block;
+    margin: 0 auto;
+    background-color: grey;
+    border: 1px solid black; 
+    color: inherit;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 8px 16px;
+    transition: transform darkgrey;
+}
