@@ -9,7 +9,7 @@ import nanoid from 'nanoid';
 
 export default function App() {
   const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem('saved-contacts')) ?? []
+    () => JSON.parse(localStorage.getItem('seved-contacts')) ?? []
   );
   const [filter, setFilter] = useState(""); 
 

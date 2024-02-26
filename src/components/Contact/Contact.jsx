@@ -1,6 +1,6 @@
 import styles from './Contact.module.css';
-import { IoPerson } from 'react-icon/io5';
-import { FaPhoneAlt } from 'react-icon/fa'
+import { IoPerson } from 'react-icons/io5';
+import { FaPhoneAlt } from 'react-icons/fa';
 
 export default function Contact({contact: {name, numer, id}, onDelete}){
     return (
