@@ -2,18 +2,19 @@
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import SearchBox from '../SearchBox/SearchBox';
-import styles from './App.css';
-import inisionContacts from '../../contacts.json';
+import './App.css';
 import { useEffect, useState } from 'react';
 import nanoid from 'nanoid';
 
 
 export default function App() {
-  const [contacts, setContacts] = useState(inisionContacts);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem('saved-contacts')) ?? []
+  );
   const [filter, setFilter] = useState(""); 
 
   useEffect(() =>{
-    localStorage.setItem('seve-contact', JSON.stringify(contacts))
+    localStorage.setItem('seved-contacts', JSON.stringify(contacts))
   }, [contacts]);
 
 
