@@ -1,22 +1,23 @@
 import styles from './SearchBox.module.css';
-import useId from 'react'
+import { useState } from 'react'; 
+import { nanoid } from 'nanoid';
 
-export default function SearchBox({value, onFilter}) {
-    const contactId = useId();
-    return(
+export default function SearchBox({ value, onChange }) {
+    const [contactId] = useState(nanoid());
+    return (
         <div className={styles.container}>
-            <label className={styles.label} htmlFor="elementId">
-            Find contacts by name
+            <label className={styles.label} htmlFor={contactId}>
+                Find contacts by name
             </label>
             
             <input
-            className={styles.input} 
-            type="text"
-             value={value} 
-            onChange={(e) => onFilter(e.target.value)}
-            id={contactId}
-            placeholder="name"/>
-           
+                className={styles.input}
+                type="text"
+                value={value}
+                onChange={(e) => onChange(e.target.value)} 
+                id={contactId}
+                placeholder="name"
+            />
         </div>
     );
 };

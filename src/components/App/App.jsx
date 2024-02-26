@@ -9,12 +9,12 @@ import nanoid from 'nanoid';
 
 export default function App() {
   const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem('seved-contacts')) ?? []
+    () => JSON.parse(localStorage.getItem('saved-contacts')) ?? []
   );
   const [filter, setFilter] = useState(""); 
 
   useEffect(() =>{
-    localStorage.setItem('seved-contacts', JSON.stringify(contacts))
+    localStorage.setItem('saved-contacts', JSON.stringify(contacts))
   }, [contacts]);
 
 

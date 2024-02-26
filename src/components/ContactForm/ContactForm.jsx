@@ -1,7 +1,8 @@
 import styles from './ContactForm.module.css';
-import {Formik, Form, Field, ErrorMassege} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import useId from 'react'; 
+import { useState } from 'react';
+import { nanoid } from 'nanoid'; 
 
 const schema = yup.object().shape({
     name: yup.string().min(3, 'Too short').max(50, 'Too long').required('Required'),
@@ -9,13 +10,15 @@ const schema = yup.object().shape({
 });
 
 export default function ContactForm({onAdd}) {
-   const contactId = useId();
+   const [contactId] = useState(nanoid());
 
     return (
         <div className={styles.container}>
             <Formik
             initialValues={{id: '', name: '', number: ''}}
-            onSubmit={onAdd}
+            onSubmit={(values, {resetForm}) => {
+                onAdd(values, {resetForm});
+            }}
             validationSchema={schema}>
                 <Form className={styles.form}>
                     <div className={styles.field}>
@@ -25,7 +28,7 @@ export default function ContactForm({onAdd}) {
                         type="text"
                         id={contactId +'-name'}
                         placeholder="name" />
-                        <ErrorMassege name="name" component="div" className={styles.error} />
+                        <ErrorMessage name="name" component="div" className={styles.error} />
                     </div>
 
                     <div className={styles.field}>
@@ -33,9 +36,9 @@ export default function ContactForm({onAdd}) {
                         <Field 
                         name="number"
                         type="tel"
-                        id={contactId + 'number'} 
+                        id={contactId + '-number'} 
                         placeholder= '000-000-000'/>
-                        <ErrorMassege name="number" component="div" className={styles.error} />
+                       <ErrorMessage name="number" component="div" className={styles.error} />
                     </div>
 
                     <button type="submit">Add contact</button>
