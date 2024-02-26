@@ -4,10 +4,10 @@
     gap: 16px;
     max-width: 460px;
     padding: 20px;
-    border: 1px solid #ad865a;
+    border: 1px solid grey;
     border-radius: 8px;
     margin: 0 auto;
-    background-color: #f0e6dc;
+    background-color: lightgray;
   }
   
   .label {
@@ -35,23 +35,22 @@
     margin-left: 8px;
   
     text-align: center;
-    background-color: #e7b4ad;
-    color: #9b111e;
+    background-color: darkgrey;
+    color: black;
   }
   
   .button {
     width: 150px;
     padding: 8px 16px;
-    border: 1px solid #ad865a;
-    border-radius: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
     margin: 0 auto;
-  
-    background-color: #cfb599;
+    background-color: grey;
     font-size: 18px;
-    transition: background-color 250ms ease-in;
+    transition: background-color 250ms grey;
   }
   
   .button:hover,
   .button:focus {
-    background-color: #be9d79;
+    background-color: darkgrey;
   }

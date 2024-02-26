@@ -5,9 +5,9 @@
   
     width: 200px;
     padding: 16px;
-    border: 1px solid #ad865a;
+    border: 1px solid grey;
     border-radius: 8px;
-    background-color: #f0e6dc;
+    background-color: lightgray;
   }
   
   .icon {
@@ -24,15 +24,14 @@
   
     width: 45px;
     padding: 6px 4px;
-    border: 1px solid #c66a61;
+    border: 1px solid darkgrey;
     border-radius: 15px;
-  
-    background-color: #d88f86;
+    background-color: grey;
     transform: translate(278%);
-    transition: background-color 250ms ease-in;
+    transition: background-color 250ms grey;
   }
   
   .button:hover,
   .button:focus {
-    background-color: #c66a61;
+    background-color: darkgrey;
   }
