@@ -1,19 +1,27 @@
+
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import SearchBox from '../SearchBox/SearchBox';
-import styles from './App.modules.css';
+import styles from './App.css';
 import inisionContacts from '../../contacts.json';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import nanoid from 'nanoid';
 
 
 export default function App() {
   const [contacts, setContacts] = useState(inisionContacts);
   const [filter, setFilter] = useState(""); 
 
-  const addContact = (newContact) => {
+  useEffect(() =>{
+    localStorage.setItem('seve-contact', JSON.stringify(contacts))
+  }, [contacts]);
+
+
+  const addContact = (newContact, {resetForm}) => {
     setContacts((prevContacts) => {
-      return [...prevContacts, newContact]
+      return [...prevContacts, {...newContact, id: nanoid() }]
     });
+    resetForm && resetForm();
   };
 
   const deleteContact = (contactId) => {
@@ -23,13 +31,18 @@ export default function App() {
   }
 
   const visibleContact = contacts.filter(contact => 
-    contact.text.toLowerCase().includes(filter.toLowerCase()))
+    contact.name.toLowerCase().includes(filter.toLowerCase()));
+
+
+  const handleFilter = e => {
+    setFilter(e.target.value.toLowerCase().trim());
+  };
 
   return(
-    <div className={styles.contaner}>
+    <div>
     <h1>Phonebook</h1>
     <ContactForm  onAdd={addContact} />
-    <SearchBox value={filter} onChange={setFilter}/>
+    <SearchBox value={filter} onChange={handleFilter}/>
     <ContactList contacts = {visibleContact} onDelete={deleteContact} />
   </div>
   );
