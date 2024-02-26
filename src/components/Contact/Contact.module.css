@@ -1,0 +1,30 @@
+.contact {
+    border-radius: 10px;
+    border: 1px solid orange;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.information {
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+}
+.name,
+.number {
+display: flex;
+align-items: center;
+gap: 4px; 
+}
+
+.delete {
+    background-color: grey;
+    border: none;
+    color: inherit;
+    border-radius: 10px;
+    font-size: 14px;
+    height: 32px;
+    padding: 8px;
+    transition: transform darkgrey;
+}
