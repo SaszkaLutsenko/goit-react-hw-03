@@ -1,19 +1,18 @@
 .container {
-    width: 320px;
-    margin-bottom: 32px;
-    display: flex;
-    flex-direction: column;
-}
-
-.label {
-    margin-bottom: 4px;
-}
-
-.input {
-    background-color: transparent;
-    padding: 8px 8px;
-    color:  inherit;
-    border: 1px solid pink;
-    border-radius: 10px;
-    font-size:  16px;
-} 
+    padding: 35px 20px;
+    text-align: center;
+  }
+  
+  .text {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .input {
+    display: block;
+    width: 450px;
+    padding: 10px 10px;
+    border: 1px solid #ad865a;
+    border-radius: 8px;
+    margin: 0 auto;
+  }

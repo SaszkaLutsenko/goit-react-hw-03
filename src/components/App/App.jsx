@@ -1,50 +1,45 @@
+import { useState, useEffect } from 'react';
+import css from './App.module.css';
 
-import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import SearchBox from '../SearchBox/SearchBox';
-import './App.css';
-import { useEffect, useState } from 'react';
-import nanoid from 'nanoid';
+import ContactForm from '../ContactForm/ContactForm';
 
-
-export default function App() {
+const App = () => {
   const [contacts, setContacts] = useState(
     () => JSON.parse(localStorage.getItem('saved-contacts')) ?? []
   );
-  const [filter, setFilter] = useState(""); 
 
-  useEffect(() =>{
-    localStorage.setItem('saved-contacts', JSON.stringify(contacts))
+  const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('saved-contacts', JSON.stringify(contacts));
   }, [contacts]);
 
+  const filterContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
-  const addContact = (newContact, {resetForm}) => {
-    setContacts((prevContacts) => {
-      return [...prevContacts, {...newContact, id: nanoid() }]
+  const addContact = newContact => {
+    setContacts(prevContacts => {
+      return [...prevContacts, newContact];
     });
-    resetForm && resetForm();
   };
 
-  const deleteContact = (contactId) => {
-   setContacts(prevContacts =>{
-    return prevContacts.filter((contact) => contact.id !== contactId )
-   })
-  }
-
-  const visibleContact = contacts.filter(contact => 
-    contact.name.toLowerCase().includes(filter.toLowerCase()));
-
-
-  const handleFilter = e => {
-    setFilter(e.target.value.toLowerCase().trim());
+  const deleteContact = contactId => {
+    setContacts(prevContact => {
+      return prevContact.filter(contact => contact.id !== contactId);
+    });
   };
 
-  return(
-    <div>
-    <h1>Phonebook</h1>
-    <ContactForm  onAdd={addContact} />
-    <SearchBox value={filter} onChange={handleFilter}/>
-    <ContactList contacts = {visibleContact} onDelete={deleteContact} />
-  </div>
+  return (
+    <div className={css.container}>
+      <h1 className={css.title}>Phonebook</h1>
+      <ContactForm onAdd={addContact} />
+      <SearchBox value={filter} onFilter={setFilter} />
+      <ContactList contacts={filterContacts} onDelete={deleteContact} />
+    </div>
   );
 };
+
+export default App;

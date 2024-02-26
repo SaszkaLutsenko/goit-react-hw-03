@@ -1,9 +1,6 @@
-.list{
+.list {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
-}
-
-.item{
-    width: 240px;
-}
+    flex-wrap: wrap;
+  }
